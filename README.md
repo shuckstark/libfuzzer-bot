@@ -1,7 +1,7 @@
 # libfuzzer-bot
 
-Examples of simple fuzzing bots for opensource projects
--------------------------------------------------------
+Fuzzing bots for opensource projects
+------------------------------------
 Disclaimer: This is not an official Google product.
 
 The goal of this project is to set up and maintain several

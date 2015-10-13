@@ -10,8 +10,8 @@ mkindex() {
 
 echo $P
 while true; do
-  echo =========== PULL libfuzzer-example
-  (cd libfuzzer-example; git pull)
+  echo =========== PULL libfuzzer-bot
+  (cd libfuzzer-bot; git pull)
   L=$(date +%Y-%m-%d-%H-%M-%S.log)
   echo =========== Starting $L
   gsutil -m rsync -r gs://freetype-fuzzing-corpora/CORPORA CORPORA

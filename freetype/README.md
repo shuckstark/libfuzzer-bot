@@ -31,10 +31,7 @@ The log files contain the fuzzer output followed by the list of *not covered* fu
 These are the basic steps to set up a similar bot. 
 
 * Create a bucket on [Google Cloud Storage](https://cloud.google.com/storage) to store the test corpus. 
-* Create a clean Linux VM on  
-a [GCE](https://cloud.google.com/compute/) with Ubuntu 14.04.
-During the creation give the VM read-write access to the storage bucket. For that, choose
-[Management, disk, networking, access & security options => Access & security => Storage => Read Write](https://cloud.google.com/compute/docs/authentication) 
+* Create a clean Linux VM on [GCE](https://cloud.google.com/compute/) with Ubuntu 14.04. During the creation give the VM read-write access to the storage bucket. For that, choose [Management, disk, networking, access & security options => Access & security => Storage => Read Write](https://cloud.google.com/compute/docs/authentication) 
 * Download and execute [setup.sh](setup.sh). This will install required packages, build the fresh version of Clang/LLVM, checkout and prepare the FreeType sources.
 * 
 * Run `./libfuzzer-bot/freetype/loop.sh`. This will start the infinite loop:

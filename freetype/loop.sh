@@ -17,6 +17,7 @@ while true; do
   gsutil -m rsync -r gs://freetype-fuzzing-corpora/CORPORA CORPORA
   $P/fuzz_freetype.sh >  $L 2>&1
   exit_code=$?
+  mkdir -p CORPORA
   $P/dump_uncovered.sh `pwd`/CORPORA/C4/* >> $L 2>&1
   case $exit_code in
     0) prefix=pass

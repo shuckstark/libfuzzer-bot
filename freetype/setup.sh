@@ -9,4 +9,5 @@ libfuzzer-bot/freetype/build_llvm.sh
 
 git clone git://git.sv.nongnu.org/freetype/freetype2.git
 (cd freetype2/ && ./autogen.sh)
-ln -s llvm/lib/Fuzzer .
+ln -sf llvm/lib/Fuzzer .
+cp llvm/projects/compiler-rt/lib/sanitizer_common/scripts/sancov.py llvm-build/bin/

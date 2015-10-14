@@ -6,4 +6,4 @@ rm -rf llvm-build
 mkdir llvm-build
 cd llvm-build
 cmake -DCMAKE_BUILD_TYPE=Release -G Ninja $HOME/llvm
-ninja check-asan check-clang check-llvm
+ninja check-asan check-clang check-llvm check-ubsan

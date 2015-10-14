@@ -30,10 +30,13 @@ The log files contain the fuzzer output followed by the list of *not covered* fu
 # Setup 
 These are the basic steps to set up a similar bot. 
 
-* Create a clean Linux VM. The following steps were tested on 
-a [GCE](https://cloud.google.com/compute/) instance using Ubuntu 14.04
+* Create a bucket on [Google Cloud Storage](https://cloud.google.com/storage) to store the test corpus. 
+* Create a clean Linux VM, we use 
+a [GCE](https://cloud.google.com/compute/) instance using Ubuntu 14.04.
+During the creation give the VM read-write access to the storage bucket. For that, choose
+[Management, disk, networking, access & security options => Access & security => Storage => Read Write](https://cloud.google.com/compute/docs/authentication) 
 * Download and execute [setup.sh](setup.sh). This will install required packages, build the fresh version of Clang/LLVM, checkout and prepare the FreeType sources.
-* Create a bucket on [Google Cloud Storage](https://cloud.google.com/storage) to store the test corpus, authenticate the bot to have access to this bucket. 
+* 
 * Run `./libfuzzer-bot/freetype/loop.sh`. This will start the infinite loop:
   * Rsync the test corpus from server to local dir.
   * Pull fresh FreeType

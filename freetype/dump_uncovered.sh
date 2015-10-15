@@ -33,5 +33,5 @@ sancov.py print *sancov  2> /dev/null |\
   llvm-symbolizer -obj run_inputs -inlining=0 -functions=none |\
   grep freetype2 |\
   sed "s#.*freetype2/##g" |\
-  sort | cat -n
+  sort --field-separator=: --key=1,1 --key=2n,2 --key=3n,3 | cat -n
 

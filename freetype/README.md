@@ -1,4 +1,4 @@
-This page describes an experimental fuzzer bot for [FreeType](freetype.org)
+This page describes an [experimental fuzzer bot](http://107.178.217.50/) for [FreeType](freetype.org)
 
 # Motivation
 
@@ -22,7 +22,7 @@ One day we may migrate to a proper CI tool, but this is not the current goal.
 
 # Usage 
 
-Just go to the [Fuzzer URL](http://104.197.184.140/) and check individual logs.
+Just go to the [Fuzzer URL](http://107.178.217.50/) and check individual logs.
 
 If the fuzzer has detected an error, the log name will have the "FAIL" prefix, otherwise the name will start with "pass".
 The log files contain the fuzzer output followed by the list of *not covered* functions (file names and line numbers are given). If a bug is found, the fuzzer output will contain the error message and the reproducer. 

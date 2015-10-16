@@ -41,7 +41,7 @@ $P/build.sh func -fsanitize=shift -fsanitize-coverage=func > func_build.log 2>&1
 wait
 
 echo =========== FUZZING
-./harfbuzz_asan_cov_fuzzer -max_len=$MAX_LEN $CORPUS  -artifact_prefix=../CORPORA/ARTIFACTS -jobs=$J -workers=$J -max_total_time=$MAX_TOTAL_TIME > $L 2>&1
+./harfbuzz_asan_cov_fuzzer -max_len=$MAX_LEN $CORPUS  -artifact_prefix=../CORPORA/ARTIFACTS/ -jobs=$J -workers=$J -max_total_time=$MAX_TOTAL_TIME > $L 2>&1
 exit_code=$?
 case $exit_code in
   0) prefix=pass

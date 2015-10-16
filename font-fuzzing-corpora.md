@@ -1,7 +1,7 @@
 font-fuzzing-corpora
 --------------------
 
-Fuzzers for font parsers, such as [./freetype] need extensive seed corpora
+Fuzzers for font parsers, such as [freetype](./freetype/README.md) need extensive seed corpora
 to be efficient.
 
 We are using seed inputs from the following sources:

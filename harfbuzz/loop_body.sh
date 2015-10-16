@@ -26,6 +26,12 @@ $P/build.sh asan_cov -fsanitize=address -fsanitize-coverage=edge,8bit-counters >
 echo =========== FUZZING
 ./harfbuzz_asan_cov_fuzzer -max_len=1024 ./CORPORA/C1  -artifact_prefix=../CORPORA/ARTIFACTS -jobs=$J -workers=$J -max_total_time=60 > $L 2>&1
 exit_code=$?
+case $exit_code in
+  0) prefix=pass
+    ;;
+  *) prefix=FAIL
+    ;;
+esac
 echo =========== SYNC CORPORA BACK
 gsutil -m rsync -r CORPORA $BUCKET/CORPORA
 echo =========== UPDATE WEB PAGE

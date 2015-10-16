@@ -29,17 +29,16 @@ J=$(grep CPU /proc/cpuinfo | wc -l )
 
 L=$(date +%Y-%m-%d-%H-%M-%S.log)
 echo =========== STARTING $L ==========================
-echo =========== PULL libFuzzer
-(cd Fuzzer; svn up)
-echo =========== PULL HarBuzz
-(cd harfbuzz; git pull)
-echo =========== SYNC CORPORA
+echo =========== PULL libFuzzer && (cd Fuzzer; svn up)
+echo =========== PULL HarBuzz   && (cd harfbuzz; git pull)
+echo =========== SYNC CORPORA and BUILD
 mkdir -p CORPORA/ARTIFACTS
-gsutil -m rsync -r $BUCKET/CORPORA CORPORA
-echo =========== BUILDING
+# These go in parallel.
+(gsutil -m rsync -r $BUCKET/CORPORA CORPORA; gsutil -m rsync -r CORPORA $BUCKET/CORPORA) &
 $P/build.sh asan_cov -fsanitize=address -fsanitize-coverage=edge,8bit-counters > asan_cov_build.log 2>&1 &
 $P/build.sh func -fsanitize=shift -fsanitize-coverage=func > func_build.log 2>&1 &
 wait
+
 echo =========== FUZZING
 ./harfbuzz_asan_cov_fuzzer -max_len=$MAX_LEN $CORPUS  -artifact_prefix=../CORPORA/ARTIFACTS -jobs=$J -workers=$J -max_total_time=60 > $L 2>&1
 exit_code=$?
@@ -53,8 +52,6 @@ echo =========== DUMP COVERAGE
 rm -f *sancov
 UBSAN_OPTIONS=coverage=1 ./harfbuzz_func_fuzzer -max_len=$MAX_LEN $CORPUS -runs=0 > func_run.log 2>&1
 dump_coverage harfbuzz_func_fuzzer >> $L
-echo =========== SYNC CORPORA BACK
-gsutil -m rsync -r CORPORA $BUCKET/CORPORA
 echo =========== UPDATE WEB PAGE
 sudo mv $L /var/www/html/$prefix-$L
 mkindex

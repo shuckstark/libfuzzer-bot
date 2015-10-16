@@ -7,7 +7,6 @@ set -e
 set -u
 export PATH=$HOME/llvm-build/bin:$PATH
 
-cd
 rm -rf fuzz_freetype
 mkdir fuzz_freetype
 cd fuzz_freetype

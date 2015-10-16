@@ -8,11 +8,13 @@ mkindex() {
   (cd /var/www/html/; sudo $P/mkindex.sh index.html *log)
 }
 
+BUCKET=gs://font-fuzzing-corpora/
+
 L=$(date +%Y-%m-%d-%H-%M-%S.log)
 echo =========== STARTING $L ==========================
 echo =========== SYNC CORPORA
 mkdir -p CORPORA
-gsutil -m rsync -r gs://freetype-fuzzing-corpora/CORPORA CORPORA
+gsutil -m rsync -r $BUCKET/CORPORA CORPORA
 echo =========== FUZZING
 $P/fuzz_freetype.sh >  $L 2>&1
 exit_code=$?
@@ -25,7 +27,7 @@ case $exit_code in
     ;;
 esac
 echo =========== SYNC CORPORA BACK
-gsutil -m rsync -r CORPORA gs://freetype-fuzzing-corpora/CORPORA
+gsutil -m rsync -r CORPORA $BUCKET/CORPORA
 echo =========== UPDATE WEB PAGE
 grep -v /cff/ $L > t.log
 sudo cp t.log /var/www/html/$prefix-$L

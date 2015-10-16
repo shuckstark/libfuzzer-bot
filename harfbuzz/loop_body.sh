@@ -24,7 +24,7 @@ gsutil -m rsync -r $BUCKET/CORPORA CORPORA
 echo =========== BUILDING
 $P/build.sh asan_cov -fsanitize=address -fsanitize-coverage=edge,8bit-counters > asan_cov_build.log 2>&1
 echo =========== FUZZING
-./harfbuzz_asan_cov_fuzzer -max_len=1024 ./CORPORA/C1  -artifact_prefix=../CORPORA/ARTIFACTS -jobs=$J -workers=$J -max_total_time=60 > $L 2>&1
+./harfbuzz_asan_cov_fuzzer -max_len=2048 ./CORPORA/C1  -artifact_prefix=../CORPORA/ARTIFACTS -jobs=$J -workers=$J -max_total_time=60 > $L 2>&1
 exit_code=$?
 case $exit_code in
   0) prefix=pass

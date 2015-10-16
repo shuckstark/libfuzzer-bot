@@ -23,7 +23,8 @@ dump_coverage() {
 
 BUCKET=gs://font-fuzzing-corpora/
 CORPUS=CORPORA/C1
-MAX_LEN=2048
+MAX_LEN=4096
+MAX_TOTAL_TIME=600
 export ASAN_OPTIONS=quarantine_size_mb=10 # Make asan less memory-hungry.
 J=$(grep CPU /proc/cpuinfo | wc -l )
 
@@ -40,7 +41,7 @@ $P/build.sh func -fsanitize=shift -fsanitize-coverage=func > func_build.log 2>&1
 wait
 
 echo =========== FUZZING
-./harfbuzz_asan_cov_fuzzer -max_len=$MAX_LEN $CORPUS  -artifact_prefix=../CORPORA/ARTIFACTS -jobs=$J -workers=$J -max_total_time=60 > $L 2>&1
+./harfbuzz_asan_cov_fuzzer -max_len=$MAX_LEN $CORPUS  -artifact_prefix=../CORPORA/ARTIFACTS -jobs=$J -workers=$J -max_total_time=$MAX_TOTAL_TIME > $L 2>&1
 exit_code=$?
 case $exit_code in
   0) prefix=pass

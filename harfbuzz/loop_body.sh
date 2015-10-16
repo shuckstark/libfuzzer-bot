@@ -2,6 +2,7 @@
 # Copyright 2015 Google Inc. All Rights Reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
 
+export PATH=$HOME/llvm-build/bin:$PATH
 P=$(cd $(dirname $0) && pwd)
 
 mkindex() {

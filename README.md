@@ -13,5 +13,6 @@ and other tools to automatically find bugs.
 See subdirs for project-specific files and docs:
 
 * [freetype](./freetype/README.md)
+* [harfbuzz](./harfbuzz/README.md)
 
 

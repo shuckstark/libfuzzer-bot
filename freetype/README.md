@@ -20,7 +20,6 @@ It is not based on any serious continuous integration (CI) tool
 but just uses a simple shell script (!).
 One day we may migrate to a proper CI tool, but this is not the current goal.
 
-The fuzzer uses [font-fuzzing-corpus](../font-fuzzing-corpus.md) derived from free publicly available fonts only.
 
 # Usage 
 
@@ -28,6 +27,9 @@ Just go to the [Fuzzer URL](http://107.178.217.50/) and check individual logs.
 
 If the fuzzer has detected an error, the log name will have the "FAIL" prefix, otherwise the name will start with "pass".
 The log files contain the fuzzer output followed by the list of *not covered* functions (file names and line numbers are given). If a bug is found, the fuzzer output will contain the error message and the reproducer. 
+
+The fuzzer uses [font-fuzzing-corpus](../font-fuzzing-corpus.md) derived from free publicly available fonts only.
+
 
 # Setup 
 These are the basic steps to set up a similar bot. 

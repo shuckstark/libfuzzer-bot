@@ -19,7 +19,7 @@ echo =========== PULL FreeType
 (cd ../freetype2/ && git pull)
 
 echo =========== CONFIGURE
-SAN=-fsanitize=address,signed-integer-overflow,shift
+SAN=-fsanitize=address #,signed-integer-overflow,shift
 COV=-fsanitize-coverage=edge,8bit-counters
 CC="clang  $SAN $COV"   ../freetype2/configure > /dev/null 
 

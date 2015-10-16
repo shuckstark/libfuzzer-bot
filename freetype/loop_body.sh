@@ -19,7 +19,7 @@ echo =========== FUZZING
 $P/fuzz_freetype.sh >  $L 2>&1
 exit_code=$?
 echo =========== COMPUTING CORPUS COVERAGE
-$P/dump_uncovered.sh `pwd`/CORPORA/C4/* >> $L 2>&1
+$P/dump_uncovered.sh `pwd`/CORPORA/*/* >> $L 2>&1
 case $exit_code in
   0) prefix=pass
     ;;

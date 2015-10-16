@@ -28,7 +28,7 @@ Just go to the [Fuzzer URL](http://107.178.217.50/) and check individual logs.
 If the fuzzer has detected an error, the log name will have the "FAIL" prefix, otherwise the name will start with "pass".
 The log files contain the fuzzer output followed by the list of *not covered* functions (file names and line numbers are given). If a bug is found, the fuzzer output will contain the error message and the reproducer. 
 
-The fuzzer uses [font-fuzzing-corpus](../font-fuzzing-corpus.md) derived from free publicly available fonts only.
+The fuzzer uses [font-fuzzing-corpora](../font-fuzzing-corpora.md) derived from free publicly available fonts only.
 
 
 # Setup 

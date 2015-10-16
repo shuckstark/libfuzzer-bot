@@ -16,8 +16,8 @@ dump_coverage() {
   sancov.py print *sancov  2> /dev/null |\
     sancov.py missing $1 2> /dev/null |\
     llvm-symbolizer -obj $1 -inlining=0 -functions=none |\
-    grep harfbuzz |\
-    sed "s#.*harfbuzz/##g" |\
+    grep /func/ |\
+    sed "s#.*func/##g" |\
     sort --field-separator=: --key=1,1 --key=2n,2 --key=3n,3 | cat -n
 }
 

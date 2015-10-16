@@ -8,7 +8,7 @@ rm -rf $NAME
 cp -rf harfbuzz $NAME
 cd $NAME
 ./autogen.sh
-CXX="clang++ -g $SAN $COV" CC="clang -g $SAN $COV" CCLD="clang++ $SAN $COV" ./configure --enable-static --disable-shared
+CXX="clang++ $SAN $COV" CC="clang -g $SAN $COV" CCLD="clang++ $SAN $COV" ./configure --enable-static --disable-shared
 make -j
 )
 ln -sf $HOME/llvm/lib/Fuzzer .

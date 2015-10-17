@@ -23,7 +23,7 @@ dump_coverage() {
 
 BUCKET=gs://font-fuzzing-corpora
 CORPUS=CORPORA/C1
-MAX_LEN=4096
+MAX_LEN=1024
 MAX_TOTAL_TIME=7200
 export ASAN_OPTIONS=quarantine_size_mb=10 # Make asan less memory-hungry.
 J=$(grep CPU /proc/cpuinfo | wc -l )

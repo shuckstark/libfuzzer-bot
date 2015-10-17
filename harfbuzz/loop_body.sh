@@ -21,7 +21,7 @@ dump_coverage() {
     sort --field-separator=: --key=1,1 --key=2n,2 --key=3n,3 | cat -n
 }
 
-BUCKET=gs://font-fuzzing-corpora/
+BUCKET=gs://font-fuzzing-corpora
 CORPUS=CORPORA/C1
 MAX_LEN=4096
 MAX_TOTAL_TIME=7200

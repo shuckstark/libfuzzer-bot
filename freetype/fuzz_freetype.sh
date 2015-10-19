@@ -38,6 +38,6 @@ clang++ -std=c++11  ../freetype2/src/tools/ftfuzzer/ftfuzzer.cc \
   -lbz2 -lz -lpng -lharfbuzz  -o freetype2_fuzzer
 
 echo =========== RUN freetype2_fuzzer
-export ASAN_OPTIONS=quarantine_size_mb=10 # Make asan less memory-hungry.
+export ASAN_OPTIONS=quarantine_size_mb=10:strip_path_prefix=$HOME/ # Make asan less memory-hungry.
 J=$(grep CPU /proc/cpuinfo | wc -l )
 ./freetype2_fuzzer -max_len=20480 ../CORPORA/C1 -artifact_prefix=../CORPORA/ARTIFACTS/ -jobs=$J -workers=$J -max_total_time=7200

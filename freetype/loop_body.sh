@@ -8,7 +8,7 @@ mkindex() {
   (cd /var/www/html/; sudo $P/mkindex.sh index.html *log)
 }
 
-BUCKET=gs://font-fuzzing-corpora/
+BUCKET=gs://font-fuzzing-corpora
 
 L=$(date +%Y-%m-%d-%H-%M-%S.log)
 echo =========== STARTING $L ==========================
